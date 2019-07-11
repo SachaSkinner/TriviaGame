@@ -1,0 +1,26 @@
+body {
+    background: url("../images/american_flag_getty.59443ddf.fill-800x373.jpegquality-50.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container {
+    background-color: azure;
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    overflow: scroll;
+    margin-top: 30px;
+    position: relative;
+
+}
+#form {
+    display: none;
+}
+button {
+    position: absolute;
+    margin: auto;
+    padding: 20px;
+    background-color: blue;
+    color: aliceblue;
+}
