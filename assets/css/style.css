@@ -1,5 +1,5 @@
 body {
-    background: url("../images/american_flag_getty.59443ddf.fill-800x373.jpegquality-50.jpg");
+    /* background: url("../images/american_flag_getty.59443ddf.fill-800x373.jpegquality-50.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -17,10 +17,23 @@ body {
 #form {
     display: none;
 }
-button {
+#timer-box {
+    display: inline;
+}
+/* /* button {
     position: absolute;
     margin: auto;
     padding: 20px;
     background-color: blue;
     color: aliceblue;
+ */  */
+/* #show-number {
+    margin-top: 30;
+} */
+/* #show-number, #start-game-button, h2 {
+    float: left;
+
 }
+form {
+    clear: both;
+} */

@@ -6,35 +6,30 @@ var wrong = 0;
 $("#timer-box").hide();
 
 $("#start-game-button").on("click", function() {
-    start(currentQuestion);
+    start();
     $("#start-game-button").hide();
 });
 
 $("#submit").on("click", function () {
     var value = $("input:checked").val();
     $("#timer-box").html("Time Left: ");
-    
-    console.log(currentQuestion)
     var correctAnswer = questions[currentQuestion].correct;
     if(value === correctAnswer){
         correct++;
     } else {
         wrong++;
     };
+    
+    start();
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        start(currentQuestion);
-    }
+    // if (currentQuestion >  questions.length) {
+
+    //     $("#result").html("Your result: " + correct + " correct answers and "+ wrong + " wrong.");
+        
+    // } 
+  
+    
    
-     else {
-        clearInterval(intervalId)
-        $("#timer-box").empty();
-            $("#submit").hide();
-            
-            $("#questionBox").empty();
-            $("#show-number").empty();
-            $("#result").html("Your result: " + correct + " correct answers and "+ wrong + " wrong.");
-    }
    
 });
 
@@ -69,16 +64,14 @@ function decrement() {
         $("#questionBox").empty();
         $("#submit").empty();
         $("#submit").html("Next question")
-        if (currentQuestion == (questions.length - 1)) {
-            $("#show-number").html("");
-            $("#submit").html("See your result")
 
-        }
+
+
 
     };
 };
 
-function start(currentQuestion) {
+function start() {
     console.log(currentQuestion)
     $("#submit").html("Submit");
     number = 5;
@@ -87,9 +80,16 @@ function start(currentQuestion) {
     $("#form").css("display", "block");
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
-
-    if (currentQuestion < questions.length) { 
+    if (currentQuestion < questions[currentQuestion].answers.length) { 
      $("#questionBox").html("<div>" + questions[currentQuestion].question + "</div>");    
+    }
+    if (currentQuestion === questions[currentQuestion].answers.length) { 
+        $("#timer-box").empty();
+        $("#submit").hide();
+        $("show-number").empty();
+        $("#result").html("Your result: " + correct + " correct answers and "+ wrong + " wrong.");
+
+
     }
 
    
