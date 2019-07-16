@@ -7,6 +7,9 @@ var userValue;
 $("#timer-box").hide();
 $("#submit").hide();
 $("#next-question").hide()
+$("#gif-no").hide()
+$("#gif-almost").hide()
+$("#gif-yes").hide()
 function myCoolTimer() {
     // create a variable to store in a timer function later
 
@@ -56,13 +59,23 @@ $("#submit").on("click", function () {
     myCoolTimer();
     // console.log(currentQuestion)
     if (currentQuestion == questions.length) {
-       
+
         $("#result").html("Your result: " + correct + " correct answer(s) and " + wrong + " wrong.");
         $("#question-box").hide();
         clearInterval(interval)
         $("#timer-box").hide()
         $("#show-number").hide()
         $("#submit").hide()
+        if (correct < wrong) {
+            $("#gif-no").show()
+
+        }
+        if (correct == wrong) {
+            $("#gif-almost").show()
+        }
+        if (correct > wrong) {
+            $("#gif-yes").show()
+        }
     }
 });
 
@@ -127,40 +140,15 @@ function showCurrentQuestion() {
     }
 }
 
-function checkAnswer(){
-    var userAnswer = $("input[name=" +currentQuestion+ "]:checked").val();
-    
-    if(userAnswer === questions[currentQuestion].correct){
+function checkAnswer() {
+    var userAnswer = $("input[name=" + currentQuestion + "]:checked").val();
+
+    if (userAnswer === questions[currentQuestion].correct) {
         correct++;
     } else {
         wrong++;
     }
 }
 
-// function countCorrect() {
-//     var correctAnswer = questions[currentQuestion].correct;
-//     console.log(correctAnswer);
-//     var userValue = $("input[name=" +currentQuestion+ "]:checked").val();
-
-//     var userValue = $("input:checked").val();
-//     console.log(userValue);
-//     if(userValue === correctAnswer){
-//         correct++;
-//     } else {
-//         wrong++;
-//     };
-
-
-
-// }
-
-// else {
-//     clearInterval(intervalId)
-//     $("#timer-box").empty();
-//         $("#submit").hide();
-
-//         $("#questionBox").empty();
-//         $("#show-number").empty();
-//         $("#result").html("Your result: " + correct + " correct answer(s) and "+ wrong + " wrong.");
 
 

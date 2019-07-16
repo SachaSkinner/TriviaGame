@@ -17,7 +17,7 @@ body {
 }
 
 #timer-box {
-    display: inline;
+    display: none;
 }
 .trivia {
     /* background-color: rgb(39, 70, 209); */
@@ -33,9 +33,14 @@ body {
     margin-top: 50px;
     padding: 10px;
     
+    
+}
+#gif-yes, #gif-almost, #gif-no {
+    display: none;
 }
 #submit, #next-question {
     padding: 10px;
+    display: none;
 
 }
 
