@@ -1,44 +1,92 @@
 var intervalId;
-var number = 5;
+var number = 10;
 var currentQuestion = 0;
 var correct = 0;
 var wrong = 0;
+var userValue;
 $("#timer-box").hide();
+$("#submit").hide();
+$("#next-question").hide()
+function myCoolTimer() {
+    // create a variable to store in a timer function later
 
-$("#start-game-button").on("click", function() {
-    start(currentQuestion);
+    // how many seconds count down till 0
+    var number = 10;
+    // show it immediately while calling
+    $("#show-number").html(number);
+    interval = setInterval(decrement, 1000)
+
+    function decrement() {
+        number--;
+        $("#show-number").html(number);
+        if (number < 0) {
+            clearInterval(interval);
+
+            checkAnswer();
+
+            $("#timer-box").hide();
+            $("#show-number").hide();
+            $("#comments").html("Time is up..")
+            // submit button
+            $("#submit").hide()
+            $("#next-question").show()
+            $("#question-box").hide()
+            if (currentQuestion == questions.length - 1) {
+                $("#next-question").empty()
+                $("#next-question").html("See your result")
+            }
+
+        }
+    }
+}
+$("#start-game-button").on("click", function () {
+    $("#timer-box").show();
+    $("#submit").show();
     $("#start-game-button").hide();
+
+    showCurrentQuestion();
+    myCoolTimer();
 });
 
 $("#submit").on("click", function () {
-    var value = $("input:checked").val();
-    $("#timer-box").html("Time Left: ");
-    
-    console.log(currentQuestion)
-    var correctAnswer = questions[currentQuestion].correct;
-    if(value === correctAnswer){
-        correct++;
-    } else {
-        wrong++;
-    };
+    checkAnswer();
+    clearInterval(interval);
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        start(currentQuestion);
+    showCurrentQuestion();
+    myCoolTimer();
+    // console.log(currentQuestion)
+    if (currentQuestion == questions.length) {
+       
+        $("#result").html("Your result: " + correct + " correct answer(s) and " + wrong + " wrong.");
+        $("#question-box").hide();
+        clearInterval(interval)
+        $("#timer-box").hide()
+        $("#show-number").hide()
+        $("#submit").hide()
     }
-   
-     else {
-        clearInterval(intervalId)
-        $("#timer-box").empty();
-            $("#submit").hide();
-            
-            $("#questionBox").empty();
-            $("#show-number").empty();
-            $("#result").html("Your result: " + correct + " correct answers and "+ wrong + " wrong.");
-    }
-   
 });
 
+$("#next-question").on("click", function () {
+    currentQuestion++;
+    showCurrentQuestion();
+    // submit button
+    $("#submit").show()
+    $("#timer-box").show();
+    $("#show-number").show();
+    $("#comments").html("")
+    $("#next-question").hide()
+    $("#question-box").show()
+    myCoolTimer()
 
+    if (currentQuestion == questions.length) {
+        $("#result").html("Your result: " + correct + " correct answer(s) and " + wrong + " wrong.");
+        $("#question-box").hide();
+        clearInterval(interval)
+        $("#timer-box").hide()
+        $("#show-number").hide()
+        $("#submit").hide()
+    }
+});
 
 var questions = [
     {
@@ -56,51 +104,63 @@ var questions = [
         answers: ["Yosemite", "Sequoia", "Yellowstone"],
         correct: "Yellowstone"
     },
+    {
+        question: "How many American presidents were only children?",
+        answers: ["5", "0", "12"],
+        correct: "0"
+    },
+    {
+        question: "When did 3 notorious criminals who is still not found escape from Alcatraz prison?",
+        answers: ["1962", "1957", "1975"],
+        correct: "1962"
+    },
 ];
 
 
-function decrement() {
-    number--;
-    $("#show-number").html(number);
-    if (number < 0) {
-        $("#show-number").html("<h2>" + "Time is up!" + "</h2>");
-        $("#timer-box").html("");
-        clearInterval(intervalId);
-        $("#questionBox").empty();
-        $("#submit").empty();
-        $("#submit").html("Next question")
-        if (currentQuestion == (questions.length - 1)) {
-            $("#show-number").html("");
-            $("#submit").html("See your result")
+function showCurrentQuestion() {
 
-        }
-
-    };
-};
-
-function start(currentQuestion) {
-    console.log(currentQuestion)
-    $("#submit").html("Submit");
-    number = 5;
-    $("#timer-box").show();
-    $("#show-number").html(number);
-    $("#form").css("display", "block");
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
-
-    if (currentQuestion < questions.length) { 
-     $("#questionBox").html("<div>" + questions[currentQuestion].question + "</div>");    
+    if (currentQuestion < questions.length) {
+        $("#question-box").html("<div>" + questions[currentQuestion].question + "</div>");
+        for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+            $("#question-box").append("<input type='radio' name='" + currentQuestion + "' value='" + questions[currentQuestion].answers[i] + "'>" + " " + questions[currentQuestion].answers[i] + " ")
+        };
     }
-
-   
-    for(var i = 0; i < questions[currentQuestion].answers.length; i++){
-        $("#questionBox").append("<input type='radio' name='"+currentQuestion+"' value='"+ questions[currentQuestion].answers[i]+"'>" + questions[currentQuestion].answers[i])
-
-    };
-};
-function stop() {
-    clearInterval(intervalId);
-
-
 }
+
+function checkAnswer(){
+    var userAnswer = $("input[name=" +currentQuestion+ "]:checked").val();
+    
+    if(userAnswer === questions[currentQuestion].correct){
+        correct++;
+    } else {
+        wrong++;
+    }
+}
+
+// function countCorrect() {
+//     var correctAnswer = questions[currentQuestion].correct;
+//     console.log(correctAnswer);
+//     var userValue = $("input[name=" +currentQuestion+ "]:checked").val();
+
+//     var userValue = $("input:checked").val();
+//     console.log(userValue);
+//     if(userValue === correctAnswer){
+//         correct++;
+//     } else {
+//         wrong++;
+//     };
+
+
+
+// }
+
+// else {
+//     clearInterval(intervalId)
+//     $("#timer-box").empty();
+//         $("#submit").hide();
+
+//         $("#questionBox").empty();
+//         $("#show-number").empty();
+//         $("#result").html("Your result: " + correct + " correct answer(s) and "+ wrong + " wrong.");
+
 

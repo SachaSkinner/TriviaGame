@@ -1,39 +1,46 @@
 body {
-    /* background: url("../images/american_flag_getty.59443ddf.fill-800x373.jpegquality-50.jpg"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-image: url("../images/2557801.jpg")
 }
 .container {
-    background-color: azure;
+    background-color: rgb(243, 63, 63);
     width: 800px;
-    height: 800px;
+    height: 400px;
     margin: auto;
-    overflow: scroll;
     margin-top: 30px;
-    position: relative;
+    text-align: center;
+    font-size: 36px;
+    opacity: 0.9;
+    border-radius: 20px;
+    padding: 10px;
+   
 
 }
-#form {
-    display: none;
-}
+
 #timer-box {
     display: inline;
 }
-/* /* button {
-    position: absolute;
-    margin: auto;
-    padding: 20px;
-    background-color: blue;
-    color: aliceblue;
- */  */
-/* #show-number {
-    margin-top: 30;
-} */
-/* #show-number, #start-game-button, h2 {
-    float: left;
+.trivia {
+    /* background-color: rgb(39, 70, 209); */
+    background-color: rgb(12, 12, 70);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin: 0;
+    opacity: 0.8;
 
 }
-form {
-    clear: both;
-} */
+#start-game-button {
+    margin-top: 50px;
+    padding: 10px;
+    
+}
+#submit, #next-question {
+    padding: 10px;
+
+}
+
+input[type="radio"] {
+    -ms-transform: scale(1.8); /* IE 9 */
+    -webkit-transform: scale(1.8); /* Chrome, Safari, Opera */
+    transform: scale(1.8);
+}
