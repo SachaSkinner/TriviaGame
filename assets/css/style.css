@@ -2,7 +2,7 @@ body {
     background-image: url("../images/2557801.jpg")
 }
 .container {
-    background-color: rgb(243, 63, 63);
+    background-color: white;
     width: 800px;
     height: 400px;
     margin: auto;
@@ -20,7 +20,7 @@ body {
     display: none;
 }
 .trivia {
-    /* background-color: rgb(39, 70, 209); */
+
     background-color: rgb(12, 12, 70);
     color: white;
     padding: 15px;

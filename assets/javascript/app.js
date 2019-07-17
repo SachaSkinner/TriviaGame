@@ -1,5 +1,5 @@
 var intervalId;
-var number = 10;
+var number = 30;
 var currentQuestion = 0;
 var correct = 0;
 var wrong = 0;
@@ -14,7 +14,7 @@ function myCoolTimer() {
     // create a variable to store in a timer function later
 
     // how many seconds count down till 0
-    var number = 10;
+    var number = 30;
     // show it immediately while calling
     $("#show-number").html(number);
     interval = setInterval(decrement, 1000)
@@ -113,7 +113,7 @@ var questions = [
         correct: "Philadelphia"
     },
     {
-        question: "What place was he first official national park established by President Grant in 1872? ",
+        question: "What was the first official national park, established by President Grant in 1872? ",
         answers: ["Yosemite", "Sequoia", "Yellowstone"],
         correct: "Yellowstone"
     },
@@ -123,10 +123,50 @@ var questions = [
         correct: "0"
     },
     {
-        question: "When did 3 notorious criminals who is still not found escape from Alcatraz prison?",
+        question: "When did 3 notorious criminals, who have still not been found, escape from Alcatraz prison?",
         answers: ["1962", "1957", "1975"],
         correct: "1962"
     },
+    {
+        question: "When did The Boston Tea Party happen?",
+        answers: ["1673", "1873", "1773"],
+        correct: "1773"
+    },
+    {
+        question: "What is the largest state in America",
+        answers: ["California", "Alaska", "Texas"],
+        correct: "Alaska"
+    },
+    {
+        question: "What is the smallest state in America",
+        answers: ["Rhode Island", "Delaware", "Connecticut"],
+        correct: "Rhode Island"
+    },
+    {
+        question: "How many time zones are in the US?",
+        answers: ["5", "6", "7"],
+        correct: "6"
+    },
+    {
+        question: "Christmas in America was illegal from the 1600s until which year (for the whole country) ?",
+        answers: ["1889", "1807", "1907"],
+        correct: "1907"
+    },
+    {
+        question: "What president was the only one unmarried president throughout his entire life",
+        answers: ["James Buchanan", "Grover Cleveland", "Ronald Reagan "],
+        correct: "James Buchanan"
+    },
+    {
+        question: "How many million people live in America?",
+        answers: ["337", "387", "457"],
+        correct: "337"
+    },
+
+
+
+    
+    
 ];
 
 
